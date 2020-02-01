@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sportify</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <meta name="google-signin-client_id" content="265438823375-a5t9p7sqvmcni05uli69jh38avle4a4p.apps.googleusercontent.com">    
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    <div class="site-navbar-wrap bg-white">
+      <div class="site-navbar-top">
+        <div class="container py-2">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <a href="#" class="p-2 pl-0"><span class="icon-twitter"></span></a>
+              <a href="#" class="p-2 pl-0"><span class="icon-facebook"></span></a>
+              <a href="#" class="p-2 pl-0"><span class="icon-linkedin"></span></a>
+              <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a>
+            </div>
+            <div class="col-6">
+              <div class="d-flex ml-auto">
+                <a href="#" class="d-flex align-items-center ml-auto mr-4">
+                  <span class="icon-envelope mr-2"></span>
+                  <span class="d-none d-md-inline-block">sportify@mail.com</span>
+                </a>
+                <a href="tel://12912830302" class="d-flex align-items-center">
+                  <span class="icon-phone mr-2"></span>
+                  <span class="d-none d-md-inline-block">+91 1234567890</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-navbar-wrap bg-white">
+      
+      <div class="container">
+        <div class="site-navbar bg-light">
+          <div class="py-1">
+            <div class="row align-items-center">
+              <div class="col-2">
+                <h2 class="mb-0 site-logo"><a href="/sportify">Sportify</a></h2>
+              </div>
+              <div class="col-10">
+                <nav class="site-navigation text-right" role="navigation">
+                  <div class="container">
+                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                      <li class="active">
+                        <a href="index.html">Home</a>
+                      </li>                                   
+                      <li><a href="dashboard.html">Dashboard</a></li>
+                                            
+                      <li><a href="contact.html">Contact</a></li>
+                      <li><a onclick="signOut()">Sign Out</a></li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="slide-one-item home-slider owl-carousel">
+      
+      <div class="site-blocks-cover" style="background-image: url(images/food_back.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 text-center" data-aos="fade">
+              <h1>Track your food <strong>intake!</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>  
+
+      <div class="site-blocks-cover" style="background-image: url(images/step_back.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 text-center" data-aos="fade">
+              <h1> Keep a check on your <strong>Step Count</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div> 
+      
+
+    </div>
+
+    <div class="border-bottom">
+      <div class="row no-gutters">
+        <div class="col-md-6 col-lg-3">
+          <div class="w-100 h-100 block-feature p-5 bg-light">
+            <span class="d-block mb-3">
+              <span class="flaticon-padmasana display-4"></span>
+            </span>
+            <h2>Breakfast</h2>
+            <p>Start your day with a good and heavy breakfast!</p>
+            <button class="btn btn-primary btn-xs text-center" data-toggle="modal" data-target="#myModal1">Log your Meal</button>
+
+            <div id="myModal1" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">                      
+                      <h4 class="modal-title">Add Breakfast</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>What did you ate in breakfast?</p>                      
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check1" value="Cornflakes">
+                        <label class="form-check-label" for="exampleCheck1">Cornflakes</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check2">
+                        <label class="form-check-label" for="exampleCheck1">Milk</label>
+                      </div>
+                    </div>        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" onclick="insert1()">Enter</button>
+                    </div>
+                  </div>
+              
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="w-100 h-100 block-feature p-5">
+            <span class="d-block mb-3">
+              <span class="flaticon-weight display-4"></span>
+            </span>
+            <h2>Lunch</h2>
+            <p>Have a tasty and delicious lunch!</p>
+            <br>
+            <button class="btn btn-primary btn-xs text-center" data-toggle="modal" data-target="#myModal2">Log your Meal</button>
+
+            <div id="myModal2" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">                      
+                      <h4 class="modal-title">Add Lunch</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>What did you eat in lunch?</p>                      
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check3" value="Rajma">
+                        <label class="form-check-label" for="exampleCheck1">Rajma</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check4" value="Rice">
+                        <label class="form-check-label" for="exampleCheck1">Rice</label>
+                      </div>
+                    </div>        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" onclick="insert2()">Enter</button>
+                    </div>
+                  </div>
+              
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="w-100 h-100 block-feature p-5 bg-light">
+            <span class="d-block mb-3">
+              <span class="flaticon-boxing-gloves display-4"></span>
+            </span>
+            
+            <h2>Snacks</h2>
+            <p>Don't miss out on the variety of snacks!</p>
+            <br>
+            <button class="btn btn-primary btn-xs text-center" data-toggle="modal" data-target="#myModal3">Log your Meal</button>
+            
+            <div id="myModal3" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">                      
+                      <h4 class="modal-title">Add Snacks</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>What did you eat in snacks?</p>                      
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check5" value="Tea">
+                        <label class="form-check-label" for="exampleCheck1">Tea</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check6" value="Cornflakes">
+                        <label class="form-check-label" for="exampleCheck1">Cornflakes</label>
+                      </div>
+                    </div>        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" onclick="insert3()">Enter</button>
+                    </div>
+                  </div>
+              
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="w-100 h-100 block-feature p-5">
+            <span class="d-block mb-3">
+              <span class="flaticon-running display-4"></span>
+            </span>
+            <h2>Dinner</h2>
+            <p>End your day with a satisfying and mouth-watering dinner</p>
+            <button class="btn btn-primary btn-xs text-center" data-toggle="modal" data-target="#myModal4">Log your Meal</button>
+
+            <div id="myModal4" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">                      
+                      <h4 class="modal-title">Add Dinner</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>What did you eat in dinner?</p>                      
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check7" value="Tortilla">
+                        <label class="form-check-label" for="exampleCheck1">Tortilla</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check8" value="Nachos">
+                        <label class="form-check-label" for="exampleCheck1">Nachos</label>
+                      </div>
+                    </div>        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" onclick="insert4()">Enter</button>
+                    </div>
+                  </div>
+              
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .block-feature -->
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12 col-lg-5 mb-5 mb-lg-0">
+            <h2 class="mb-3 text-uppercase">All About <strong class="text-black font-weight-bold">Our App</strong></h2>
+            <p class="lead">Sportify brings you the latest technologies to help you seamlessly track all of your personal things.</p>            
+            <ul class="site-block-check">
+              <li>Track your daily food and water intake</li>
+              <li>Get food details crafted by experts across the industry</li>
+              <li>Cross-platform integration - works on Android, iOS, Web and now watchOS!</li>
+              <li>Embedded step-counter to help you be fit and meet your personal goals! </li>
+            </ul>
+            <p><a href="#" class="btn btn-primary pill px-4">Read More</a></p>
+          </div>
+          <div class="col-md-12 col-lg-6 ml-auto">
+            <img src="images/about.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="site-section block-14">
+
+      <div class="container">
+        
+        <div class="heading-with-border text-center">
+          <h2 class="heading text-uppercase">Testimonials</h2>
+        </div>
+
+        <div class="nonloop-block-14 owl-carousel">
+
+          <div class="d-flex block-testimony">
+            <div class="person mr-3">
+              <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded-circle">
+            </div>
+            <div>
+              <h2 class="h5">Katie Johnson, CEO</h2>
+              <blockquote>&ldquo;Sportify hepled me to keep the track of all the data! Recommended 10/10.&rdquo;</blockquote>
+            </div>
+          </div>
+          <div class="d-flex block-testimony">
+            <div class="person mr-3">
+              <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </div>
+            <div>
+              <h2 class="h5">Jane Mars, Designer</h2>
+              <blockquote>&ldquo;The water reminder helped me a lot, refreshed me all the time.&rdquo;</blockquote>
+            </div>
+          </div>
+          <div class="d-flex block-testimony">
+            <div class="person mr-3">
+              <img src="images/person_3.jpg" alt="Image" class="img-fluid rounded-circle">
+            </div>
+            <div>
+              <h2 class="h5">Shane Holmes, CEO</h2>
+              <blockquote>&ldquo;The cross-platform integration removed the hassle of maintaining another phone just for the app.&rdquo;</blockquote>
+            </div>
+          </div>         
+
+        </div>
+
+      </div>
+      
+    </div>
+
+
+
+    <div class="site-section bg-light">
+
+      <div class="container">
+        
+        <div class="heading-with-border text-center mb-5">
+          <h2 class="heading text-uppercase">Made with love by</h2>
+        </div>
+
+          <div class="row">
+
+            <div class="col-lg-3 mb-4">
+              <div class="block-trainer">
+                <img src="images/ansh.jpg" alt="Image" class="img-fluid">
+                <div class="block-trainer-overlay">
+                  <h2>Ansh Mehta</h2>                  
+                </div>
+              </div>    
+            </div>
+            <div class="col-lg-3 mb-4">
+              <div class="block-trainer">
+                <img src="images/soham.jpg" alt="Image" class="img-fluid">
+                <div class="block-trainer-overlay text-center">
+                  <h2>Soham Dave</h2>                  
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 mb-4">
+              <div class="block-trainer">
+                <img src="images/harshil.jpg" alt="Image" class="img-fluid">
+                <div class="block-trainer-overlay">
+                  <h2>Harshil Zaveri</h2>                  
+                </div>
+              </div>    
+            </div>
+            <div class="col-lg-3 mb-4">
+              <div class="block-trainer">
+                <img src="images/shivam.jpg" alt="Image" class="img-fluid">
+                <div class="block-trainer-overlay">
+                  <h2>Shivam Kejriwal</h2>                  
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/main.js"></script>
+  <script>      
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+            console.log('User signed out.');
+        });
+        location.replace("login.php");
+    }
+    function onLoad() {
+        var firebaseConfig = {
+            apiKey: "AIzaSyDdaY-2YAK3y3e8fwCk3ssH4yDHXW_RdjU",
+            authDomain: "getriped-10a14.firebaseapp.com",
+            databaseURL: "https://getriped-10a14.firebaseio.com",
+            projectId: "getriped-10a14",
+            storageBucket: "getriped-10a14.appspot.com",
+            messagingSenderId: "265438823375",
+            appId: "1:265438823375:web:c264d956fba3b071f4c8ba",
+            measurementId: "G-XFF8QTYXF9"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var data = firebase.database().ref("food");
+        var arr = [];
+        data.on("value",function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+                var temp = childSnapshot.key;
+                arr.push(temp);
+            });            
+        });
+        
+        gapi.load('auth2', function() {
+            gapi.auth2.init();
+        });
+    }
+    function insert1() {
+        var auth2 = gapi.auth2.init();
+        if(auth2.isSignedIn.get()) {
+            var profile = auth2.currentUser.get().getBasicProfile().getEmail();
+            console.log(profile);
+        }
+        else {
+            alert("Session expired. Login again.");
+            location.replace("/sportify/login.html");
+        }      
+        var key;          
+        var data = firebase.database().ref("users");
+        data.on("value",function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+                if(profile === childSnapshot.val().email) {
+                    key = childSnapshot.key;                    
+                    return true;
+                }
+            });
+        });
+        console.log(key); key = 1;
+        var d = new Date();
+        var date = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+        var food = document.getElementById("check1").value;
+        data = firebase.database().ref("userData/"+key);
+        data.child(date+"/breakfast").set({            
+            food
+        });
+        alert("Inserted!");
+        location.replace("/sportify");    
+    }
+    function insert2() {
+        var auth2 = gapi.auth2.init();
+        if(auth2.isSignedIn.get()) {
+            var profile = auth2.currentUser.get().getBasicProfile().getEmail();
+            console.log(profile);
+        }
+        else {
+            alert("Session expired. Login again.");
+            location.replace("/sportify/login.html");
+        }      
+        var key;          
+        var data = firebase.database().ref("users");
+        data.on("value",function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+                if(profile === childSnapshot.val().email) {
+                    key = childSnapshot.key;                    
+                    return true;
+                }
+            });
+        });
+        console.log(key); key = 1;
+        var d = new Date();
+        var date = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+        var food = document.getElementById("check3").value;
+        data = firebase.database().ref("userData/"+key);
+        data.child(date+"/lunch").set({            
+            food,
+        });    
+        alert("Inserted!");
+        location.replace("/sportify");
+    }
+    function insert3() {
+        var auth2 = gapi.auth2.init();
+        if(auth2.isSignedIn.get()) {
+            var profile = auth2.currentUser.get().getBasicProfile().getEmail();
+            console.log(profile);
+        }
+        else {
+            alert("Session expired. Login again.");
+            location.replace("/sportify/login.html");
+        }      
+        var key;          
+        var data = firebase.database().ref("users");
+        data.on("value",function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+                if(profile === childSnapshot.val().email) {
+                    key = childSnapshot.key;                    
+                    return true;
+                }
+            });
+        });
+        console.log(key); key = 1;
+        var d = new Date();
+        var date = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+        var food = document.getElementById("check5").value;
+        data = firebase.database().ref("userData/"+key);
+        data.child(date+"/snacks").set({            
+            food,
+        });    
+        alert("Inserted!");
+        location.replace("/sportify");
+    }
+    function insert4() {
+        var auth2 = gapi.auth2.init();
+        if(auth2.isSignedIn.get()) {
+            var profile = auth2.currentUser.get().getBasicProfile().getEmail();
+            console.log(profile);
+        }
+        else {
+            alert("Session expired. Login again.");
+            location.replace("/sportify/login.html");
+        }      
+        var key;          
+        var data = firebase.database().ref("users");
+        data.on("value",function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+                if(profile === childSnapshot.val().email) {
+                    key = childSnapshot.key;                    
+                    return true;
+                }
+            });
+        });
+        console.log(key);
+        key = 1;
+        var d = new Date();
+        var date = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+        var food = document.getElementById("check7").value;
+        data = firebase.database().ref("userData/"+key);
+        data.child(date+"/dinner").set({            
+            food,
+        });    
+        alert("Inserted!");
+        location.replace("/sportify");
+    }
+  </script>  
+  </body>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>  
+</html>
